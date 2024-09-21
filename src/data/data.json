@@ -1,124 +1,149 @@
 {
-    "states": [
-      {
-        "id": 1,
-        "name": "Maharashtra",
-        "code": "MH",
-        "cities": [
-          {
-            "id": 1,
-            "name": "Mumbai",
-            "warehouses": [
-              { "id": 1, "name": "Warehouse A", "location": "Mumbai" },
-              { "id": 2, "name": "Warehouse B", "location": "Mumbai" },
-              { "id": 3, "name": "Warehouse C", "location": "Mumbai" }
-            ]
-          },
-          {
-            "id": 2,
-            "name": "Pune",
-            "warehouses": [
-              { "id": 4, "name": "Warehouse D", "location": "Pune" },
-              { "id": 5, "name": "Warehouse E", "location": "Pune" }
-            ]
-          },
-          {
-            "id": 3,
-            "name": "Nagpur",
-            "warehouses": [
-              { "id": 6, "name": "Warehouse F", "location": "Nagpur" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Karnataka",
-        "code": "KA",
-        "cities": [
-          {
-            "id": 4,
-            "name": "Bengaluru",
-            "warehouses": [
-              { "id": 7, "name": "Warehouse G", "location": "Bengaluru" },
-              { "id": 8, "name": "Warehouse H", "location": "Bengaluru" }
-            ]
-          },
-          {
-            "id": 5,
-            "name": "Mysuru",
-            "warehouses": [
-              { "id": 9, "name": "Warehouse I", "location": "Mysuru" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Gujarat",
-        "code": "GJ",
-        "cities": [
-          {
-            "id": 6,
-            "name": "Ahmedabad",
-            "warehouses": [
-              { "id": 10, "name": "Warehouse J", "location": "Ahmedabad" }
-            ]
-          },
-          {
-            "id": 7,
-            "name": "Surat",
-            "warehouses": [
-              { "id": 11, "name": "Warehouse K", "location": "Surat" },
-              { "id": 12, "name": "Warehouse L", "location": "Surat" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Tamil Nadu",
-        "code": "TN",
-        "cities": [
-          {
-            "id": 8,
-            "name": "Chennai",
-            "warehouses": [
-              { "id": 13, "name": "Warehouse M", "location": "Chennai" },
-              { "id": 14, "name": "Warehouse N", "location": "Chennai" }
-            ]
-          },
-          {
-            "id": 9,
-            "name": "Coimbatore",
-            "warehouses": [
-              { "id": 15, "name": "Warehouse O", "location": "Coimbatore" }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "name": "West Bengal",
-        "code": "WB",
-        "cities": [
-          {
-            "id": 10,
-            "name": "Kolkata",
-            "warehouses": [
-              { "id": 16, "name": "Warehouse P", "location": "Kolkata" },
-              { "id": 17, "name": "Warehouse Q", "location": "Kolkata" }
-            ]
-          },
-          {
-            "id": 11,
-            "name": "Howrah",
-            "warehouses": [
-              { "id": 18, "name": "Warehouse R", "location": "Howrah" }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-  
+  "states": [
+    {
+      "name": "Maharashtra",
+      "code": "MH",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Mumbai",
+          "code": "MUM",
+          "status": "active",
+          "warehouses": [
+            { "name": "Warehouse A", "status": "active" },
+            { "name": "Warehouse B", "status": "inactive" }
+          ]
+        },
+        {
+          "name": "Pune",
+          "code": "PUN",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse C", "status": "active" }]
+        }
+      ]
+    },
+    {
+      "name": "Gujarat",
+      "code": "GJ",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Ahmedabad",
+          "code": "AMD",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse D", "status": "active" }]
+        },
+        {
+          "name": "Surat",
+          "code": "SUR",
+          "status": "active",
+          "warehouses": []
+        }
+      ]
+    },
+    {
+      "name": "Karnataka",
+      "code": "KA",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Bengaluru",
+          "code": "BLR",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse E", "status": "active" }]
+        }
+      ]
+    },
+    {
+      "name": "Tamil Nadu",
+      "code": "TN",
+      "status": "inactive",
+      "cities": [
+        {
+          "name": "Chennai",
+          "code": "CHE",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse F", "status": "inactive" }]
+        }
+      ]
+    },
+    {
+      "name": "Rajasthan",
+      "code": "RJ",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Jaipur",
+          "code": "JPR",
+          "status": "active",
+          "warehouses": []
+        }
+      ]
+    },
+    {
+      "name": "West Bengal",
+      "code": "WB",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Kolkata",
+          "code": "CCU",
+          "status": "inactive",
+          "warehouses": [{ "name": "Warehouse G", "status": "active" }]
+        }
+      ]
+    },
+    {
+      "name": "Uttar Pradesh",
+      "code": "UP",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Lucknow",
+          "code": "LKO",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse H", "status": "active" }]
+        }
+      ]
+    },
+    {
+      "name": "Andhra Pradesh",
+      "code": "AP",
+      "status": "inactive",
+      "cities": [
+        {
+          "name": "Visakhapatnam",
+          "code": "VIZ",
+          "status": "active",
+          "warehouses": []
+        }
+      ]
+    },
+    {
+      "name": "Kerala",
+      "code": "KL",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Thiruvananthapuram",
+          "code": "TRV",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse I", "status": "inactive" }]
+        }
+      ]
+    },
+    {
+      "name": "Punjab",
+      "code": "PB",
+      "status": "active",
+      "cities": [
+        {
+          "name": "Chandigarh",
+          "code": "CHD",
+          "status": "active",
+          "warehouses": [{ "name": "Warehouse J", "status": "active" }]
+        }
+      ]
+    }
+  ]
+}
