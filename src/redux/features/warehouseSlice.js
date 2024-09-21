@@ -1,26 +1,46 @@
-
+// src/redux/slices/stateSlice.js
 import { createSlice } from '@reduxjs/toolkit';
+import data from '../../data/data.json';
 
-const warehouseSlice = createSlice({
-  name: 'warehouse',
-  initialState: {
-    warehouses: [],
-  },
+const initialState = {
+  states: data.states, // Initialize with data from JSON
+};
+
+const stateSlice = createSlice({
+  name: 'states',
+  initialState,
   reducers: {
-    addWarehouse: (state, action) => {
-      state.warehouses.push(action.payload);
+    addState: (state, action) => {
+      // Action to add a new state
+      state.states.push(action.payload);
     },
-    removeWarehouse: (state, action) => {
-      state.warehouses = state.warehouses.filter(warehouse => warehouse.id !== action.payload);
+    removeState: (state, action) => {
+      // Action to remove a state by code
+      const stateCode = action.payload;
+      state.states = state.states.filter((st) => st.code !== stateCode);
     },
-    updateWarehouse: (state, action) => {
-      const index = state.warehouses.findIndex(warehouse => warehouse.id === action.payload.id);
+    updateState: (state, action) => {
+      // Action to update a state's information
+      const index = state.states.findIndex((st) => st.code === action.payload.code);
       if (index !== -1) {
-        state.warehouses[index] = action.payload;
+        state.states[index] = { ...state.states[index], ...action.payload };
       }
     },
+    removeWarehouse: (state, action) => {
+      // Action to remove a warehouse by code
+      const warehouseCode = action.payload;
+      state.states.forEach((stateItem) => {
+        stateItem.cities.forEach((city) => {
+          city.warehouses = city.warehouses.filter((wh) => wh.code !== warehouseCode);
+        });
+      });
+    },
+    // Similarly, add addWarehouse and updateWarehouse if needed
   },
 });
 
-export const { addWarehouse, removeWarehouse, updateWarehouse } = warehouseSlice.actions;
-export default warehouseSlice.reducer;
+// Export actions
+export const { addState, removeState, updateState, removeWarehouse } = stateSlice.actions;
+
+// Export the reducer
+export default stateSlice.reducer;

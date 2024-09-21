@@ -2,9 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import data from '../../data/data.json';
 
-const initialState = {
-  states: data // Initialize with data from JSON
-};
+const initialState = data.states // Initialize with data fro
+
+
 
 const stateSlice = createSlice({
   name: 'states',
@@ -15,14 +15,22 @@ const stateSlice = createSlice({
       state.states.push(action.payload);
     },
     removeState: (state, action) => {
-      // Action to remove a state by its code
-      state.states = state.states.filter(state => state.code !== action.payload);
+      console.log("Current state:", );
+      console.log("Action payload:", action.payload);
+      console.log("State to filter:", state.states); // Check what it logs
+      if (!Array.isArray(state)) {
+        console.error("States is not an array!", state.states);
+      }
+      console.log(state)
+      state.states = state.states.find(state  => state.code !== action.payload);
     },
+    
+    
     updateState: (state, action) => {
       // Action to update a state's information
-      const index = state.states.findIndex(state => state.code === action.payload.code);
+      const index = state.states.findIndex((state) => state.code === action.payload.code);
       if (index !== -1) {
-        state.states[index] = action.payload;
+        state.states[index] = { ...state.states[index], ...action.payload }; // Merge new data
       }
     },
   },

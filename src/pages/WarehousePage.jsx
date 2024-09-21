@@ -1,14 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { removeWarehouse } from "../redux/features/warehouseSlice"; // Adjust the import path as necessary
 import { RiArrowUpDownFill } from "react-icons/ri";
 
 const WarehousePage = () => {
   const dispatch = useDispatch();
   const allState = useSelector((state) => state); // Get the entire state
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const states = allState.state.states.states; // Adjust based on the actual structure of your state
-  console.log("Full State:", states);
+  // Assuming state structure has 'state' slice with 'states' array inside
+  const states = allState.state; 
+  console.log("Full State Structure:", states); // Log the full state
 
   // Check if states is an array
   if (!Array.isArray(states)) {
@@ -22,13 +23,11 @@ const WarehousePage = () => {
   });
 
   // Flatten all warehouses from each city's warehouses array into a single array
-  const warehouses = states.flatMap((state) => 
+  const warehouses = states.flatMap((state) =>
     state.cities.flatMap((city) => city.warehouses || [])
   ); // Safely access warehouses
 
- console.log(states.flatMap((state) => 
-    state.cities.flatMap((city) => city.warehouses || [])
-  ))
+  console.log("Flattened Warehouses:", warehouses);
 
   const handleSort = (key) => {
     let direction = "ascending";
@@ -49,11 +48,19 @@ const WarehousePage = () => {
   });
 
   const handleDelete = (code) => {
-    dispatch(removeWarehouse(code));
-  };
+    console.log(code)
+    dispatch(removeState());
+    setModalOpen(false);
+};
+
+const openModal = (state) => {
+    setStateToDelete(state);
+    setModalOpen(true);
+};
 
   return (
     <div className="p-4">
+      
       <div className="flex flex-col md:flex-row justify-between items-center">
         <h2 className="text-2xl font-bold mb-4">Warehouses</h2>
         <button className="bg-[#662671] text-white px-4 py-2 rounded mb-4 md:mb-0">
@@ -101,10 +108,11 @@ const WarehousePage = () => {
           </thead>
           <tbody>
             {sortedWarehouses.map((warehouse, index) => {
-              const city = states.flatMap(state => state.cities).find(city => 
-                city.warehouses.some(w => w.code === warehouse.code)
+              // Find the city corresponding to the current warehouse
+              const city = states.flatMap((state) => state.cities).find((city) =>
+                city.warehouses.some((w) => w.code === warehouse.code)
               );
-
+              
               return (
                 <tr
                   key={warehouse.code}
@@ -114,11 +122,13 @@ const WarehousePage = () => {
                 >
                   <td className="px-4 py-2 text-center">{index + 1}</td>
                   <td className="px-4 py-2 text-center">{warehouse.name}</td>
-                  <td className="px-4 py-2 text-center">{city?.name}</td>
+                  <td className="px-4 py-2 text-center">{warehouse?.city}</td>
                   <td className="px-4 py-2 text-center">
                     <span
                       className={`px-2 py-1 rounded ${
-                        warehouse.status === "active" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+                        warehouse.status === "active"
+                          ? "bg-green-500 text-white"
+                          : "bg-red-500 text-white"
                       }`}
                     >
                       {warehouse.status}
