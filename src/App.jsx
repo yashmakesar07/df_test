@@ -1,7 +1,7 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar'; 
+import Sidebar from './components/sidebar';
 import City from './components/City';
 import State from './components/State';
 import Home from './components/Home';

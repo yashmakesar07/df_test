@@ -1,12 +1,11 @@
-// src/components/Sidebar.js
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { FaHome, FaMapMarkedAlt, FaCity, FaWarehouse, FaArrowRight } from 'react-icons/fa'; // Import icons from react-icons
 
 const Sidebar = () => {
   return (
     <div className="flex flex-col w-[25%] bg-[#FAFAFA] h-screen text-black">
-      <nav className="flex-1">
+      <nav className="flex-1 mt-5">
         <ul className="space-y-4">
           <li>
             <NavLink
